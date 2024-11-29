@@ -198,7 +198,8 @@ async def change_pass_step_2(message: Message, state: FSMContext, session):
     data_username = temp_storage.get('username')
     if re.match("^[A-Za-z0-9_]{8,}+$", new_pass):
         await state.update_data(new_password=new_pass)
-        await message.answer("<b>✅ Пароль обновлен!</b>", parse_mode=ParseMode.HTML)
+        await message.answer("<b>✅ Пароль обновлен!</b>", parse_mode=ParseMode.HTML,
+        reply_markup=await menu_kb())
         data = await state.get_data()
         get_data_new_pass = data.get('new_password')
         await update_password(session, data_username, get_data_new_pass)
