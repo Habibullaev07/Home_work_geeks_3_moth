@@ -16,7 +16,6 @@ async def cmd_start(message: Message, session, bot):
     member = await bot.get_chat_member(chat_id=os.getenv('GROUP_CHAT_ID'), 
                                        user_id=message.from_user.id)
     if member.status in ["member", "administrator", "creator"]:
-        await add_user(session, message)
         text = (
         f"<b>Привет, {message.from_user.first_name}!</b>\n"
         "Если у вас есть вопросы, касающиеся группы, "
